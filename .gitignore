@@ -1,0 +1,11 @@
+*.exe
+tasks.txt
+
+# Executables
+*.exe
+
+# Generated task data
+tasks.txt
+
+# VS Code settings
+.vscode/
