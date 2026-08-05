@@ -181,6 +181,7 @@ void TaskManager::updateTask(){
       ofstream outfile("tasks.txt");
       if(!outfile){
          cout<<" cannot open file \n";
+         return;
         }
         else{
             cout<<"the file open successfuly.\n";
@@ -223,8 +224,8 @@ void TaskManager::updateTask(){
         int taskpriority=stoi(priority);
 
         Task::Status taskStatus;
-        if(status=="panding"){
-            taskStatus= Task::Status::Panding;           
+        if(status=="Pending"){
+            taskStatus= Task::Status::Pending;           
         }else{
             taskStatus=Task::Status::Completed;
         }
@@ -235,7 +236,7 @@ void TaskManager::updateTask(){
                 taskStatus,
                 deadline);
                 tasks.push_back(newtask);
-                saveToFile();
+               
       }
 
      
