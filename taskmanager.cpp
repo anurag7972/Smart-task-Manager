@@ -1,4 +1,5 @@
 #include "taskmanager.h"
+#include <iostream>
 
 bool TaskManager::isTaskExists(int id){
     for (const auto &t: tasks){
@@ -21,36 +22,36 @@ void TaskManager::addTask(){
     std::string deadline;
    
 
-    cout<<" Enter the task id: ";
-    cin>>task_id;
+    std::cout<<" Enter the task id: ";
+    std::cin>>task_id;
             while(isTaskExists(task_id)){
-        cout<<"The task ID is already here \n\n";
-        cout<<"Please enter the another task id:";
-        cin>>task_id;
+        std::cout<<"The task ID is already here \n\n";
+        std::cout<<"Please enter the another task id:";
+        std::cin>>task_id;
      }
-    cin.ignore();
-    cout<<" Enter the task name: ";
-    getline(cin, name);
-    cout<<" Enter the task description: ";
-    getline(cin, description);
-    cout<<" Enter the task priority(1-5): ";
-    cin>>priority;
+    std::cin.ignore();
+    std::cout<<" Enter the task name: ";
+    std::getline(std::cin, name);
+    std::cout<<" Enter the task description: ";
+    std::getline(std::cin, description);
+    std::cout<<" Enter the task priority(1-5): ";
+    std::cin>>priority;
      while(priority<1 || priority>5){
-         cout<<"invalid priority\n";
-         cin>>priority;
+         std::cout<<"invalid priority\n";
+         std::cin>>priority;
      }
-    cout<<" Enter the task deadline: ";
-    cin.ignore();
-    getline(cin, deadline);
+    std::cout<<" Enter the task deadline: ";
+    std::cin.ignore();
+    std::getline(std::cin, deadline);
         Task newTask(task_id, name, description, priority, deadline);
         tasks.push_back(newTask);
-        cout<<" Task added successfully! "<<endl;
-        cout<<" total tasks= "<<tasks.size()<<endl;
+        std::cout<<" Task added successfully! "<<std::endl;
+        std::cout<<" total tasks= "<<tasks.size()<<std::endl;
 }
 
 void TaskManager::displayTasks() const{
     if(tasks.empty()){
-        cout<<"\nno task available\n";
+        std::cout<<"\nno task available\n";
     }
     else{
         for (const auto &t : tasks)
@@ -64,13 +65,13 @@ void TaskManager::displayTasks() const{
  
 void TaskManager::updateTask(){
     if(tasks.empty()){
-        cout<<"\n no task available\n";
+        std::cout<<"\n no task available\n";
         return;
     }
     else{
         int id;
-        cout<<" Enter the task id to update: ";
-        cin>>id;
+        std::cout<<" Enter the task id to update: ";
+        std::cin>>id;
         
        
         std::string name;        //  declare to its own local variable 
@@ -80,31 +81,31 @@ void TaskManager::updateTask(){
 
         for(auto &t : tasks){
             if(t.getTaskId()==id){
-             cout<<" Enter the new task name: ";
-             cin.ignore();
-             getline(cin, name);
-             cout<<" Enter the new task description: ";
-             getline(cin, description);
-             cout<<" Enter the new task priority(1-5): ";
-             cin>>priority;
+             std::cout<<" Enter the new task name: ";
+             std::cin.ignore();
+             std::getline(std::cin, name);
+             std::cout<<" Enter the new task description: ";
+             std::getline(std::cin, description);
+             std::cout<<" Enter the new task priority(1-5): ";
+             std::cin>>priority;
               while(priority<1 || priority>5){
-                  cout<<"invalid priority\n";
-                  cin>>priority;
+                  std::cout<<"invalid priority\n";
+                  std::cin>>priority;
               }
-             cout<<" Enter the new task deadline: ";
-             cin.ignore();
-             getline(cin, deadline);
+             std::cout<<" Enter the new task deadline: ";
+             std::cin.ignore();
+             std::getline(std::cin, deadline);
 
              t.setName(name);
              t.setDescription(description);
              t.setPriority(priority);
              t.setDeadline(deadline);
               
-                cout<<" Task updated successfully! "<<endl;
+                std::cout<<" Task updated successfully! "<<std::endl;
                 return;
             }
         }
-        cout<<" Task not found! "<<endl;
+        std::cout<<" Task not found! "<<std::endl;
     }
 }
 
@@ -112,23 +113,23 @@ void TaskManager::updateTask(){
 
  void TaskManager::markTaskCompleted(){
     if(tasks.empty()){  // looking if task is empty or not
-        cout<<"\n No task available:\n";
+        std::cout<<"\n No task available:\n";
         return;
     }
     
         int id;
-        cout<<"Enter the task id for marking completed\n";
-        cin>>id;
+        std::cout<<"Enter the task id for marking completed\n";
+        std::cin>>id;
 
         for (auto &t : tasks)
         {
             if(t.getTaskId()==id){  // matching the entered id with task id
                 t.markCompleted();
-                cout<<"the task successfuly marked as completed\n";
+                std::cout<<"the task successfuly marked as completed\n";
                 return;
             }
         }
-        cout<<"Task not found\n";
+        std::cout<<"Task not found\n";
         
     }
 
@@ -137,12 +138,12 @@ void TaskManager::updateTask(){
     void TaskManager::searchTask(){
         if (tasks.empty())
         {
-            cout<< "no task avialable>\n ";
+            std::cout<< "no task avialable>\n ";
             return ;
         }
         int id;
-        cout<<"Enter the Task id for search..:";
-        cin>>id;
+        std::cout<<"Enter the Task id for search..:";
+        std::cin>>id;
         for (const auto &t : tasks)
         {
             if(t.getTaskId()==id){
@@ -150,7 +151,7 @@ void TaskManager::updateTask(){
                 return;
             }
         }
-        cout<<"\nTask not found\n";
+        std::cout<<"\nTask not found\n";
         
     }
 
@@ -158,68 +159,68 @@ void TaskManager::updateTask(){
 
         if(tasks.empty()){
 
-            cout<<"No Task available ..\n";
+            std::cout<<"No Task available ..\n";
             return ;
         }
 
         int id;
-        cout<<"Enter the task ID:";
-        cin>>id;
+        std::cout<<"Enter the task ID:";
+        std::cin>>id;
         for(size_t i=0;i<tasks.size(); i++){
             
             if(tasks[i].getTaskId()==id){
                  tasks.erase(tasks.begin()+i);
-                    cout<<"Task deleted successfully\n";
+                    std::cout<<"Task deleted successfully\n";
                     return;
             }
         }
-        cout<<"Task not found\n";
+        std::cout<<"Task not found\n";
     }
  
    void TaskManager::saveToFile(){
 
-      ofstream outfile("tasks.txt");
+      std::ofstream outfile("tasks.txt");
       if(!outfile){
-         cout<<" cannot open file \n";
+         std::cout<<" cannot open file \n";
          return;
         }
         else{
-            cout<<"the file open successfuly.\n";
+            std::cout<<"the file open successfuly.\n";
         }
        for(const auto &t : tasks ){
         outfile<<t.getTaskId()<<"|"<<t.getName()<<"|"<<t.getDescription()<<"|"<<t.getPriority()<<"|"<<t.getStatus()<<"|"<<t.getDeadline()<<"\n";
-         cout<<"total task"<<tasks.size()<<endl;
+         std::cout<<"total task"<<tasks.size()<<std::endl;
 
        }
        outfile.close();
    }
 
    void TaskManager::loadFromFile(){
-    ifstream  readFile("tasks.txt");
+    std::ifstream  readFile("tasks.txt");
     if(!readFile){
 
-        cout<<"file not open.\n";
+        std::cout<<"file not open.\n";
         return;
     }
-       string line;
-      while(getline(readFile,line)){
-        stringstream ss(line);
-        string id;
-        string name;
-        string description;
-        string priority;
-        string status;
-        string deadline;
+       std::string line;
+      while(std::getline(readFile,line)){
+        std::stringstream ss(line);
+        std::string id;
+        std::string name;
+        std::string description;
+        std::string priority;
+        std::string status;
+        std::string deadline;
 
-        getline(ss, id, '|');
-        getline(ss, name, '|');
-        getline(ss, description, '|');
-        getline(ss, priority, '|');
-        getline(ss, status, '|');
-        getline(ss, deadline);
+        std::getline(ss, id, '|');
+        std::getline(ss, name, '|');
+        std::getline(ss, description, '|');
+        std::getline(ss, priority, '|');
+        std::getline(ss, status, '|');
+        std::getline(ss, deadline);
         
-        cout << "id = [" << id << "]\n";
-        cout << "priority = [" << priority << "]\n";
+        std::cout << "id = [" << id << "]\n";
+        std::cout << "priority = [" << priority << "]\n";
         int taskId= stoi(id);
         int taskpriority=stoi(priority);
 

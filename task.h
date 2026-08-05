@@ -1,53 +1,53 @@
-#ifndef task_h
-#define task_h
-#include <iostream>
+#ifndef TASK_H
+#define TASK_H
+
 #include <string>
-using namespace std;
+
 
 
  class Task{
       public:
-       enum class Status { Panding, Completed };
+       enum class Status { Pending, Completed };
       
     private:
     int task_id ;
-    string name;
-    string description;
+    std::string name;
+    std::string description;
     int priority;
    
      Status status;
-     string deadline;
+     std::string deadline;
      
     public:
       
       Task(int id,
-           const string& name,
-           const string& description,
+           const std::string& name,
+           const std::string& description,
            int priority,
-           const string& deadline);
+           const std::string& deadline);
            // second constructor to initialize all attributes including status
      Task(
           int id,
-           const string& name,
-          const string& description,
+           const std::string& name,
+          const std::string& description,
           int priority,
           Status status,
-          const string& deadline
+          const std::string& deadline
           );
      
       void displayTask() const;
       // the geeter function for the all 
       int getTaskId() const;  
        
-       string getName() const;
-       string getDescription() const;
+       std::string getName() const;
+       std::string getDescription() const;
        int getPriority() const;
-       string getStatus() const;
-       string getDeadline() const;
-      void setName(const string& name);
-      void setDescription(const string& description);
+       std::string getStatus() const;
+       std::string getDeadline() const;
+      void setName(const std::string& name);
+      void setDescription(const std::string& description);
       void setPriority(int priority);
-      void setDeadline(const string& deadline);
+      void setDeadline(const std::string& deadline);
       
    
        void markCompleted();

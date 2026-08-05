@@ -1,21 +1,22 @@
 #include "taskmanager.h"
+#include <iostream>
 int main(){
     TaskManager tm;
     tm.loadFromFile();
     int choice;
     do{
-        cout<<"\n================================\n";
-        cout<<"********* Task Manager *********\n";
-        cout<<"================================\n";
-        cout<<"1. Add Task"<<endl;
-        cout<<"2. Display Tasks"<<endl;
-        cout<<"3. Update Task"<<endl;
-        cout<<"4. Mark Task Completed"<<endl;
-        cout<<"5. Search Task"<<endl;
-        cout<<"6. Delete Task"<<endl;
-        cout<<"7. Exit"<<endl;
-        cout<<"Enter your choice: ";
-        cin>>choice;
+        std::cout<<"\n================================\n";
+        std::cout<<"********* Task Manager *********\n";
+        std::cout<<"================================\n";
+        std::cout<<"1. Add Task"<<std::endl;
+        std::cout<<"2. Display Tasks"<<std::endl;
+        std::cout<<"3. Update Task"<<std::endl;
+        std::cout<<"4. Mark Task Completed"<<std::endl;
+        std::cout<<"5. Search Task"<<std::endl;
+        std::cout<<"6. Delete Task"<<std::endl;
+        std::cout<<"7. Exit"<<std::endl;
+        std::cout<<"Enter your choice: ";
+        std::cin>>choice;
 
         switch(choice){
             case 1:
@@ -41,10 +42,10 @@ int main(){
                 tm.saveToFile();
                 break;
             case 7:
-                cout<<"Exiting...";
+                std::cout<<"Exiting...";
                 break;
             default:
-                cout<<"invalid choice";
+                std::cout<<"invalid choice";
         }
     }
     while (choice!=7);
