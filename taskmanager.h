@@ -11,6 +11,7 @@ class TaskManager
 private:
     std::vector<Task> tasks;
      bool isTaskExists(int id);
+     Task* findTaskById(int id);
 
 public:
     void addTask();

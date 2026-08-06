@@ -62,16 +62,29 @@ void TaskManager::displayTasks() const{
     }
 
 }
- 
-void TaskManager::updateTask(){
-    if(tasks.empty()){
-        std::cout<<"\n no task available\n";
-        return;
+  // implement the heper function to find the task by id and return a pointer to the task object
+  Task* TaskManager::findTaskById(int id){
+
+    for( auto &t: tasks){
+         if(t.getTaskId()==id){
+            return &t;
+         }
     }
-    else{
+    return nullptr;
+  }
+ 
+  // implement the update task function using the helper function to find the task by id and update its attributes  
+void TaskManager::updateTask(){
+   
         int id;
         std::cout<<" Enter the task id to update: ";
         std::cin>>id;
+
+        Task* task= findTaskById(id);
+        if(task==nullptr){
+            std::cout<<" Task not  Found! "<<std::endl;
+            return;
+        }
         
        
         std::string name;        //  declare to its own local variable 
@@ -79,8 +92,7 @@ void TaskManager::updateTask(){
          int priority;
          std::string deadline;
 
-        for(auto &t : tasks){
-            if(t.getTaskId()==id){
+      
              std::cout<<" Enter the new task name: ";
              std::cin.ignore();
              std::getline(std::cin, name);
@@ -96,62 +108,53 @@ void TaskManager::updateTask(){
              std::cin.ignore();
              std::getline(std::cin, deadline);
 
-             t.setName(name);
-             t.setDescription(description);
-             t.setPriority(priority);
-             t.setDeadline(deadline);
-              
+             task->setName(name);
+             task->setDescription(description);
+             task->setPriority(priority);
+             task->setDeadline(deadline);
+             
                 std::cout<<" Task updated successfully! "<<std::endl;
                 return;
-            }
-        }
-        std::cout<<" Task not found! "<<std::endl;
-    }
-}
+            
+        
+       
+     }
 
-// implementing the mark Task as completed function 
+
+// implementing the mark Task as completed function  using helper function 
 
  void TaskManager::markTaskCompleted(){
-    if(tasks.empty()){  // looking if task is empty or not
-        std::cout<<"\n No task available:\n";
-        return;
-    }
-    
-        int id;
-        std::cout<<"Enter the task id for marking completed\n";
-        std::cin>>id;
 
-        for (auto &t : tasks)
-        {
-            if(t.getTaskId()==id){  // matching the entered id with task id
-                t.markCompleted();
-                std::cout<<"the task successfuly marked as completed\n";
-                return;
-            }
-        }
-        std::cout<<"Task not found\n";
-        
-    }
+      
+       int id;
+       std::cout << "Enter the task ID to mark as completed: ";
+       std::cin >> id;
+        Task* t = findTaskById(id);
+     
+      if(t == nullptr){
+
+        std::cout<<" No Task Found.\n";
+        return;
+      }
+        t->markCompleted();
+        std::cout<<" Task marked as completed successfully! "<<std::endl;
+ }
 
     // implement the search engieen for searching the task
 
     void TaskManager::searchTask(){
-        if (tasks.empty())
-        {
-            std::cout<< "no task avialable>\n ";
-            return ;
-        }
+       
         int id;
         std::cout<<"Enter the Task id for search..:";
         std::cin>>id;
-        for (const auto &t : tasks)
-        {
-            if(t.getTaskId()==id){
-                t.displayTask();
-                return;
-            }
-        }
-        std::cout<<"\nTask not found\n";
+        Task* task= findTaskById(id);
+       if(task==nullptr){
+          std::cout<<"Task not found\n";
+          return;
+       }
+
+        task->displayTask();
+        
         
     }
 
