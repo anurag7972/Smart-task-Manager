@@ -14,7 +14,8 @@ int main(){
         std::cout<<"4. Mark Task Completed"<<std::endl;
         std::cout<<"5. Search Task"<<std::endl;
         std::cout<<"6. Delete Task"<<std::endl;
-        std::cout<<"7. Exit"<<std::endl;
+        std::cout<<"7. Sort Task"<<std::endl;
+        std::cout<<"8. Exit"<<std::endl;
         std::cout<<"Enter your choice: ";
         std::cin>>choice;
 
@@ -42,13 +43,17 @@ int main(){
                 tm.saveToFile();
                 break;
             case 7:
+                tm.sortTask();
+                tm.displayTasks();
+                break;
+            case 8:
                 std::cout<<"Exiting...";
                 break;
             default:
                 std::cout<<"invalid choice";
         }
     }
-    while (choice!=7);
+    while (choice!=8);
     
     return 0;
     

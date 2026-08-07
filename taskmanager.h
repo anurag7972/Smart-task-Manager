@@ -22,6 +22,7 @@ public:
     void deleteTask();
     void saveToFile();
     void loadFromFile();
+    void sortTask();
 };
 
 #endif

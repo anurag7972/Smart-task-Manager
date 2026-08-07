@@ -1,5 +1,6 @@
 #include "taskmanager.h"
 #include <iostream>
+#include <algorithm>
 
 bool TaskManager::isTaskExists(int id){
     for (const auto &t: tasks){
@@ -239,13 +240,57 @@ void TaskManager::updateTask(){
                 taskpriority,
                 taskStatus,
                 deadline);
-                tasks.push_back(newtask);
-               
-      }
-
-     
-      
-       
+                tasks.push_back(newtask);      
+      }  
    
 }
+
+    void TaskManager::sortTask(){
+
+        int choice;
+        std::cout<<"================================\n";
+        std::cout<<"********* Sort Task *********\n";
+        std::cout<<"================================\n";
+        std::cout<<"1. Sort by Priority"<<std::endl;
+        std::cout<<"2. Sort by Name"<<std::endl;
+        std::cout<<"3. Sort by Deadline"<<std::endl;
+        std::cout<<"4. Sort by Status"<<std::endl;
+        std::cout<<"5. Back to Main Menu"<<std::endl;
+        std::cout<<"Enter your choice: ";
+        std::cin>>choice;
+
+        switch(choice){
+
+            case 1:
+                {
+
+                    std::sort(tasks.begin(), tasks.end(), [](const Task& a, const Task& b){
+                        return a.getPriority() > b.getPriority();
+                    });
+                    std:: cout<<"Tasks sorted by priority successfully!\n\n";
+                }
+
+             break;
+
+            case 2:
+
+
+                break;
+            case 3:
+
+
+                break;
+            case 4:
+
+            
+                break;
+            case 5:
+
+                return;
+            default:
+                std::cout<<"invalid choice\n";
+        }
+        
+    }
+
  
