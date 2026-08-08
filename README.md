@@ -12,9 +12,26 @@ A console-based Task Manager application built in **C++** using **Object-Oriente
 - ✅ Delete Tasks
 - ✅ Search Tasks by ID
 - ✅ Mark Tasks as Completed
+- ✅ Sort Tasks by Priority
 - ✅ Save Tasks to File
 - ✅ Load Tasks from File
 - ✅ Prevent Duplicate Task IDs
+
+---
+
+## ⭐ Priority System
+
+Tasks use a priority scale from **1 to 5**:
+
+| Priority | Level |
+|----------|-------|
+| 1 | Lowest |
+| 2 | Low |
+| 3 | Medium |
+| 4 | High |
+| 5 | Highest |
+
+When tasks are sorted by priority, the **highest-priority tasks appear first**.
 
 ---
 
@@ -31,7 +48,7 @@ A console-based Task Manager application built in **C++** using **Object-Oriente
 
 ## 📂 Project Structure
 
-```
+```text
 Smart-Task-Manager/
 │
 ├── main.cpp
@@ -40,10 +57,8 @@ Smart-Task-Manager/
 ├── taskmanager.h
 ├── taskmanager.cpp
 ├── README.md
+├── CHANGELOG.md
 └── .gitignore
-```
-
----
 
 ## 🚀 How to Compile
 
@@ -63,13 +78,23 @@ g++ *.cpp -o taskmanager
 - Vectors
 - File Handling
 - Functions
+- STL Algorithms
+- Lambda Expressions
+- Custom Comparators
 - Git & GitHub
+
+
+
 
 ---
 
 ## 🔮 Future Improvements
 
 - Sort Tasks by Priority
+- Sort Tasks by Name
+- Sort Tasks by Deadline
+- Sort Tasks by Status
+- Filter Tasks
 - Search Tasks by Name
 - Statistics Dashboard
 - Deadline Validation
