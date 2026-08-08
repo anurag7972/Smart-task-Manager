@@ -11,7 +11,6 @@ bool TaskManager::isTaskExists(int id){
 
     }
     return false;
- 
 }
 
 void TaskManager::addTask(){
@@ -58,10 +57,8 @@ void TaskManager::displayTasks() const{
         for (const auto &t : tasks)
         {
             t.displayTask();
-        }
-        
+        }  
     }
-
 }
   // implement the heper function to find the task by id and return a pointer to the task object
   Task* TaskManager::findTaskById(int id){
@@ -86,8 +83,7 @@ void TaskManager::updateTask(){
             std::cout<<" Task not  Found! "<<std::endl;
             return;
         }
-        
-       
+         
         std::string name;        //  declare to its own local variable 
          std::string description;  //to avoid confusion with the member variables of the Task class
          int priority;
@@ -116,17 +112,11 @@ void TaskManager::updateTask(){
              
                 std::cout<<" Task updated successfully! "<<std::endl;
                 return;
-            
-        
-       
      }
-
-
 // implementing the mark Task as completed function  using helper function 
 
  void TaskManager::markTaskCompleted(){
 
-      
        int id;
        std::cout << "Enter the task ID to mark as completed: ";
        std::cin >> id;
@@ -155,8 +145,7 @@ void TaskManager::updateTask(){
        }
 
         task->displayTask();
-        
-        
+            
     }
 
     void TaskManager::deleteTask(){
@@ -269,11 +258,15 @@ void TaskManager::updateTask(){
                     });
                     std:: cout<<"Tasks sorted by priority successfully!\n\n";
                 }
-
              break;
 
             case 2:
-
+                {
+                    std::sort(tasks.begin(), tasks.end(), [](const Task& a, const Task& b){
+                        return a.getName() < b.getName();
+                    });
+                    std::cout<<"Tasks sorted by name successfully!\n\n";
+                }
 
                 break;
             case 3:
