@@ -12,6 +12,7 @@ private:
     std::vector<Task> tasks;
      bool isTaskExists(int id);
      Task* findTaskById(int id);
+     bool isValidDeadline(const std::string& deadline);
 
 public:
     void addTask();

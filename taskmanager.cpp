@@ -1,6 +1,8 @@
 #include "taskmanager.h"
 #include <iostream>
+#include <cctype>
 #include <algorithm>
+
 
 bool TaskManager::isTaskExists(int id){
     for (const auto &t: tasks){
@@ -12,6 +14,74 @@ bool TaskManager::isTaskExists(int id){
     }
     return false;
 }
+
+bool TaskManager::isValidDeadline(const std::string& deadline){
+     
+   
+    
+    if(deadline.length()!=10){
+        return false;
+    }
+    for(int i=0; i<10; i++){
+        
+        if(i==4 || i==7){
+            if(deadline[i]!='-'){
+                return false;
+            }
+        }
+        else{
+            if(!isdigit(deadline[i])){
+                return false;
+            }
+        }
+        
+    }
+
+         std:: string year=deadline.substr(0,4 );
+         std::string month=deadline.substr(5,2);
+         std::string day=deadline.substr(8,2);
+
+          int dateyear=std::stoi(year);
+          int datemonth=std::stoi(month);
+          int dateday=std::stoi(day);
+        // date validatation will go here 
+         if (dateyear < 2026 || dateyear > 2030 ||
+             datemonth < 1 || datemonth > 12 ||
+              dateday < 1 || dateday > 31)
+            {
+                 return false;
+            }
+            
+            int maxday;
+           if (datemonth == 2)
+        {
+             if ((dateyear % 400 == 0) ||
+        (dateyear % 4 == 0 && dateyear % 100 != 0))
+         {
+        maxday = 29;
+         }
+        else
+        {
+        maxday = 28;
+        }
+    
+           }
+           else if (datemonth==4 || datemonth==6 ||datemonth==9|| datemonth==11)
+           {
+            maxday=30;
+           }
+           else
+           {
+                maxday=31;
+           }
+
+           if(dateday>maxday){
+            return false;
+           }
+           
+          return true;
+}
+
 
 void TaskManager::addTask(){
    
@@ -40,9 +110,13 @@ void TaskManager::addTask(){
          std::cout<<"invalid priority\n";
          std::cin>>priority;
      }
-    std::cout<<" Enter the task deadline: ";
+    std::cout<<" Enter the task deadline (YYYY-MM-DD): ";
     std::cin.ignore();
     std::getline(std::cin, deadline);
+    while(!isValidDeadline(deadline)){
+        std::cout<<"Invalid deadline format. Please enter in YYYY-MM-DD format: ";
+        std::getline(std::cin, deadline);
+    }
         Task newTask(task_id, name, description, priority, deadline);
         tasks.push_back(newTask);
         std::cout<<" Task added successfully! "<<std::endl;
@@ -270,9 +344,7 @@ void TaskManager::updateTask(){
 
                 break;
             case 3:
-
-
-                break;
+                
             case 4:
 
             
