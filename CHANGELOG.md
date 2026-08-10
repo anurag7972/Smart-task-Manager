@@ -4,7 +4,34 @@ All notable changes to the Smart Task Manager are documented here.
 
 ---
 
-## Version 1.2 (August 2026)
+
+## [1.3.0] - 2026-08-10
+
+### Added
+- Added task sorting by priority.
+- Added task sorting by name.
+- Added task sorting by deadline.
+- Added task sorting by status.
+- Added deadline format validation using `YYYY-MM-DD`.
+- Added year validation for deadlines (2026–2030).
+- Added month and day validation.
+- Added days-per-month validation.
+- Added leap-year validation for February deadlines.
+
+### Changed
+- Task sorting now supports multiple sorting criteria.
+- Deadline input is now validated before a task is accepted.
+- Tasks are sorted by priority from highest to lowest.
+- Tasks are sorted by name alphabetically (A–Z).
+- Tasks are sorted by deadline from earliest to latest.
+- Tasks are sorted by status with Pending tasks shown before Completed tasks.
+
+### Technical
+- Used `std::sort()` with lambda comparators for task sorting.
+- Added a private `isValidDeadline()` helper to `TaskManager`.
+- Standardized deadline storage as `YYYY-MM-DD`.
+
+## Version 1.2 (August 2026) 2026-08-06
 
 ### Refactoring
 1. Added `findTaskById()` helper function.

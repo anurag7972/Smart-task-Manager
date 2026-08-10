@@ -4,6 +4,14 @@ A console-based Task Manager application built in **C++** using **Object-Oriente
 
 ---
 
+# 🚀 Smart Task Manager
+
+A console-based Task Manager application built in **C++** using **Object-Oriented Programming (OOP)**, **STL**, and **File Handling**.
+
+The project is being developed incrementally to practice real-world C++ software development concepts.
+
+---
+
 ## 📌 Features
 
 - ✅ Add a Task
@@ -12,28 +20,50 @@ A console-based Task Manager application built in **C++** using **Object-Oriente
 - ✅ Delete Tasks
 - ✅ Search Tasks by ID
 - ✅ Mark Tasks as Completed
-- ✅ Sort Tasks by Priority
 - ✅ Save Tasks to File
 - ✅ Load Tasks from File
 - ✅ Prevent Duplicate Task IDs
+- ✅ Sort Tasks by Priority
+- ✅ Sort Tasks by Name
+- ✅ Sort Tasks by Deadline
+- ✅ Sort Tasks by Status
+- ✅ Deadline Format Validation
+- ✅ Deadline Date Validation
+- ✅ Leap-Year Validation
 
 ---
 
-## ⭐ Priority System
+## 🔃 Sorting Options
 
-Tasks use a priority scale from **1 to 5**:
+The Task Manager currently supports four sorting options:
 
-| Priority | Level |
-|----------|-------|
-| 1 | Lowest |
-| 2 | Low |
-| 3 | Medium |
-| 4 | High |
-| 5 | Highest |
+| Sorting Option | Order |
+|---|---|
+| Priority | Highest → Lowest |
+| Name | A → Z |
+| Deadline | Earliest → Latest |
+| Status | Pending → Completed |
 
-When tasks are sorted by priority, the **highest-priority tasks appear first**.
+### Priority
+
+Tasks are sorted from the highest priority to the lowest priority.
+
+### Name
+
+Tasks are sorted alphabetically by task name.
+
+### Deadline
+
+Tasks are sorted from the earliest deadline to the latest deadline.
+
+Deadlines use the following format:
+
+```text
+YYYY-MM-DD
 
 ---
+
+
 
 ## 🛠️ Technologies Used
 
