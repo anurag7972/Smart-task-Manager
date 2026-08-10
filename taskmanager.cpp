@@ -25,6 +25,7 @@ bool TaskManager::isValidDeadline(const std::string& deadline){
     for(int i=0; i<10; i++){
         
         if(i==4 || i==7){
+
             if(deadline[i]!='-'){
                 return false;
             }
@@ -52,7 +53,7 @@ bool TaskManager::isValidDeadline(const std::string& deadline){
                  return false;
             }
             
-            int maxday;
+            int maxday; // maximum number of days in the given month
            if (datemonth == 2)
         {
              if ((dateyear % 400 == 0) ||
@@ -344,9 +345,23 @@ void TaskManager::updateTask(){
 
                 break;
             case 3:
+            {
+                std::sort(tasks.begin(), tasks.end(), [](const Task& a, const Task& b){
+                        return a.getDeadline() < b.getDeadline();
+                    });
+                    std::cout<<"Tasks sorted by deadline successfully!\n\n";
+            }
+                break;
+            
                 
             case 4:
-
+                {
+                     std::sort(tasks.begin(), tasks.end(), [](const Task& a, const Task& b){
+                        return a.getStatus() >  b.getStatus();
+                              
+                    });
+                    std::cout<<"Tasks sorted by status successfully!\n\n";
+                }
             
                 break;
             case 5:
@@ -355,7 +370,8 @@ void TaskManager::updateTask(){
             default:
                 std::cout<<"invalid choice\n";
         }
-        
     }
+        
+    
 
  
