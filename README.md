@@ -2,34 +2,50 @@
 
 A console-based Task Manager application built in **C++** using **Object-Oriented Programming (OOP)**, **STL**, and **File Handling**.
 
----
-
-# 🚀 Smart Task Manager
-
-A console-based Task Manager application built in **C++** using **Object-Oriented Programming (OOP)**, **STL**, and **File Handling**.
-
-The project is being developed incrementally to practice real-world C++ software development concepts.
+The project is being developed incrementally to practice real-world C++ software development concepts, STL algorithms, data structures, file handling, input validation, and Git/GitHub workflow.
 
 ---
 
 ## 📌 Features
 
+### Task Management
+
 - ✅ Add a Task
 - ✅ Display All Tasks
 - ✅ Update Existing Tasks
 - ✅ Delete Tasks
-- ✅ Search Tasks by ID
 - ✅ Mark Tasks as Completed
-- ✅ Save Tasks to File
-- ✅ Load Tasks from File
 - ✅ Prevent Duplicate Task IDs
+
+### Search
+
+- ✅ Search Tasks by ID
+- ✅ Search Tasks by Name
+- ✅ Partial Name Matching
+- ✅ Case-Insensitive Name Search
+- ✅ Display Multiple Matching Tasks
+- ✅ Whitespace Validation
+- ✅ Leading and Trailing Whitespace Trimming
+
+### Sorting
+
 - ✅ Sort Tasks by Priority
 - ✅ Sort Tasks by Name
 - ✅ Sort Tasks by Deadline
 - ✅ Sort Tasks by Status
+
+### File Handling
+
+- ✅ Save Tasks to File
+- ✅ Load Tasks from File
+
+### Validation
+
 - ✅ Deadline Format Validation
-- ✅ Deadline Date Validation
-- ✅ Leap-Year Validation
+- ✅ `YYYY-MM-DD` Deadline Format
+- ✅ Year Validation
+- ✅ Month Validation
+- ✅ Day Validation
 
 ---
 
@@ -60,8 +76,6 @@ Deadlines use the following format:
 
 ```text
 YYYY-MM-DD
-
----
 
 
 

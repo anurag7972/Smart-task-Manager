@@ -4,36 +4,49 @@ All notable changes to the Smart Task Manager are documented here.
 
 ---
 
-
-## [1.3.0] - 2026-08-10
+## [1.3.0] - 2026-08-11
 
 ### Added
+
 - Added task sorting by priority.
 - Added task sorting by name.
 - Added task sorting by deadline.
 - Added task sorting by status.
 - Added deadline format validation using `YYYY-MM-DD`.
 - Added year validation for deadlines (2026–2030).
-- Added month and day validation.
-- Added days-per-month validation.
-- Added leap-year validation for February deadlines.
+- Added month and day range validation.
+- Added Search Task menu with search by ID and search by name.
+- Added partial matching for task names.
+- Added case-insensitive task name searching.
+- Added support for displaying multiple tasks matching a search.
+- Added whitespace validation for task name search input.
+- Added leading and trailing whitespace trimming for task name searches.
 
 ### Changed
+
 - Task sorting now supports multiple sorting criteria.
-- Deadline input is now validated before a task is accepted.
 - Tasks are sorted by priority from highest to lowest.
 - Tasks are sorted by name alphabetically (A–Z).
 - Tasks are sorted by deadline from earliest to latest.
 - Tasks are sorted by status with Pending tasks shown before Completed tasks.
+- Deadline input is now validated before a task is accepted.
+- Deadline storage is standardized using the `YYYY-MM-DD` format.
+- Task name search now accepts partial and case-insensitive input.
 
 ### Technical
-- Used `std::sort()` with lambda comparators for task sorting.
-- Added a private `isValidDeadline()` helper to `TaskManager`.
-- Standardized deadline storage as `YYYY-MM-DD`.
 
-## Version 1.2 (August 2026) 2026-08-06
+- Used `std::sort()` with lambda comparators for task sorting.
+- Used `std::find_if()` for whitespace validation and trimming.
+- Used `std::transform()` for case-insensitive task name searching.
+- Added a private `isValidDeadline()` helper to `TaskManager`.
+- Added iterator-based string processing for search input validation.
+
+---
+
+## [1.2.0] - 2026-08-06
 
 ### Refactoring
+
 1. Added `findTaskById()` helper function.
 2. Refactored `markTaskCompleted()` to use the helper.
 3. Refactored `updateTask()` to use the helper.
@@ -43,9 +56,10 @@ All notable changes to the Smart Task Manager are documented here.
 
 ---
 
-## Version 1.1 (August 2026)
+## [1.1.0] - August 2026
 
 ### Bug Fixes
+
 1. Fixed the `"Pending"` vs `"pending"` mismatch while loading tasks.
 2. Removed the unnecessary `saveToFile()` call from `loadFromFile()`.
 3. Added `return` in `saveToFile()` when the file cannot be opened.
@@ -54,9 +68,10 @@ All notable changes to the Smart Task Manager are documented here.
 
 ---
 
-## Version 1.0 (Initial Release)
+## [1.0.0] - Initial Release
 
 ### Features
+
 1. Added Task.
 2. Display Tasks.
 3. Update Task.
