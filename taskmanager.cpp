@@ -218,7 +218,7 @@ void TaskManager::updateTask(){
         std::cout<<"Enter your choice: ";
         std::cin>>choice;
 
-        switch(choice){
+         switch(choice){
 
             case 1:
             {
@@ -242,68 +242,74 @@ void TaskManager::updateTask(){
                  bool found=false;
                  std::cout<<"Enter the Task name for search..:";
                  std::cin.ignore();
-                std::cout<<std::endl;
+                 std::cout<<std::endl;
                  std::getline(std::cin,searchName);
                 // Remove leading and trailing whitespace from the search name
-                 searchName.erase(searchName.begin(), std::find_if(searchName.begin(), searchName.end(), [](unsigned char c) {
-                    return !std::isspace(c);
-                 }));
-                 searchName.erase(std::find_if(searchName.rbegin(), searchName.rend(), [](unsigned char c) {
-                    return !std::isspace(c);
-                 }).base(), searchName.end());
+                  searchName=trim(searchName);
 
                  // implementing the input validation for white space
-                  auto it=std::find_if(searchName.begin(),searchName.end(),[](unsigned char c){
-                      return !std::isspace(c);
-                 });
-                 while(it==searchName.end()){
-                    std::cout<<"Invalid Input: please enter the valid Task:\n";
-                
+                  
+                while(searchName.empty()){
+                    std::cout<<"Invalid input: please enter the valid input..\n";
                     std::getline(std::cin,searchName);
-                    searchName.erase(searchName.begin(), std::find_if(searchName.begin(), searchName.end(), [](unsigned char c) {
-                    return !std::isspace(c);
-                    }));
+                    searchName=trim(searchName);
+                }
+                 
+                 
 
-                    searchName.erase(std::find_if(searchName.rbegin(), searchName.rend(), [](unsigned char c) {
-                    return !std::isspace(c);
-                    }).base(), searchName.end());
-                    
-                    it=std::find_if(searchName.begin(),searchName.end(),[](unsigned char c){
-                      return !std::isspace(c);
-                    });
-                    
-                }  
-                 
-                 
+
                  
                 // Convert the search name to lowercase for case-insensitive comparison
-                std::string searchNameLower = searchName;
-                std::transform(searchNameLower.begin(), searchNameLower.end(), searchNameLower.begin(),
-                                [](unsigned char c){ return std::tolower(c); });
+                 std::string serchNamelower= toLower( searchName);
 
-                 for_each(tasks.begin(), tasks.end(), [&](const Task& task){
-                // Convert  the task name  to lowercase for case-insensitive comparison
-                    std::string taskName = task.getName();
-                    std::transform(taskName.begin(), taskName.end(), taskName.begin(),[]
-                                    (unsigned char c){ return std::tolower(c); });
+                 
+                 std::for_each(tasks.begin(),tasks.end(),[&](const Task& task){
+                    std::string taskName=toLower(task.getName());
+                    if(taskName.find(serchNamelower) != std::string::npos){
+                        task.displayTask();
+                        found=true;
+                    }
 
-                   if(taskName.find(searchNameLower)!= std::string::npos){
-                    task.displayTask();
-                    found=true;
-                   }
-                   
-                  
                  });
                  
                  if(!found){
                      std::cout<<"Task for the name <-"<<searchName<<"-> not found\n";
                  }
                  break;
-            }
+                }
+           
             case 3:
                 return;
+        }
+        
     }
-}
+
+
+  std::string TaskManager::trim(const std::string& text){
+     
+       std::string result= text;
+
+       result.erase(result.begin(), std::find_if(result.begin(), result.end(), [](unsigned char c) {
+                    return !std::isspace(c);
+                 }));
+
+        result.erase(std::find_if(result.rbegin(), result.rend(), [](unsigned char c) {
+                    return !std::isspace(c);
+                    }).base(), result.end());
+
+            return result;
+      
+  }
+
+    std::string TaskManager::toLower(const std::string& text){
+     
+             std::string NameLower = text;
+
+             std::transform(NameLower.begin(), NameLower.end(), NameLower.begin(),
+                    [](unsigned char c){ return std::tolower(c); });
+ 
+            return NameLower;
+    }  
 
 
     void TaskManager::deleteTask(){

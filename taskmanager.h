@@ -13,6 +13,8 @@ private:
      bool isTaskExists(int id);
      Task* findTaskById(int id);
      bool isValidDeadline(const std::string& deadline);
+     std::string trim(const std::string& text);
+     std::string toLower(const std::string& text);
 
 public:
     void addTask();
