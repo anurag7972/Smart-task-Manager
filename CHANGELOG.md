@@ -41,7 +41,16 @@ All notable changes to the Smart Task Manager are documented here.
 - Added a private `isValidDeadline()` helper to `TaskManager`.
 - Added iterator-based string processing for search input validation.
 
----
+--
+
+### Refactoring
+
+- Refactored `searchTask()` to use reusable helper functions.
+- Added `trim()` helper function to remove leading and trailing whitespace.
+- Added `toLower()` helper function for case-insensitive string conversion.
+- Removed duplicated trimming logic from `searchTask()`.
+- Removed duplicated lowercase conversion logic from `searchTask()`.
+- Improved code reusability and readability.
 
 ## [1.2.0] - 2026-08-06
 
@@ -54,7 +63,7 @@ All notable changes to the Smart Task Manager are documented here.
 5. Kept `deleteTask()` unchanged because `std::vector::erase()` works naturally with an index/iterator.
 6. Improved code reusability by removing duplicated search logic.
 
----
+
 
 ## [1.1.0] - August 2026
 
