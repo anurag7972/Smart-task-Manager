@@ -46,6 +46,7 @@ The project is being developed incrementally to practice real-world C++ software
 - ✅ Year Validation
 - ✅ Month Validation
 - ✅ Day Validation
+- ✅ Leap-Year Validation
 
 ---
 
@@ -74,10 +75,9 @@ Tasks are sorted from the earliest deadline to the latest deadline.
 
 Deadlines use the following format:
 
-```text
 YYYY-MM-DD
 
-
+---
 
 ## 🛠️ Technologies Used
 
@@ -122,27 +122,33 @@ g++ *.cpp -o taskmanager
 - Vectors
 - File Handling
 - Functions
+- Helper Functions
+- String Processing
+- Input Validation
+- Input Sanitization
 - STL Algorithms
+- std::find_if()
+- std::for_each()
+- std::transform()
+- std::sort()
 - Lambda Expressions
 - Custom Comparators
+- Iterators
+- Code Refactoring
 - Git & GitHub
-
-
-
 
 ---
 
+
 ## 🔮 Future Improvements
 
-- Sort Tasks by Priority
-- Sort Tasks by Name
-- Sort Tasks by Deadline
-- Sort Tasks by Status
 - Filter Tasks
-- Search Tasks by Name
 - Statistics Dashboard
-- Deadline Validation
+- Advanced Task Search
+- Task Categories or Tags
+- Improved Date Handling
 - Better User Interface
+- Task Prioritization Improvements
 
 ---
 
