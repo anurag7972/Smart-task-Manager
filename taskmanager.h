@@ -26,6 +26,7 @@ public:
     void saveToFile();
     void loadFromFile();
     void sortTask();
+    void displayStatistics();
 };
 
 #endif

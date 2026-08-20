@@ -346,7 +346,7 @@ void TaskManager::updateTask(){
         }
        for(const auto &t : tasks ){
         outfile<<t.getTaskId()<<"|"<<t.getName()<<"|"<<t.getDescription()<<"|"<<t.getPriority()<<"|"<<t.getStatus()<<"|"<<t.getDeadline()<<"\n";
-         std::cout<<"total task"<<tasks.size()<<std::endl;
+         
 
        }
        outfile.close();
@@ -376,8 +376,7 @@ void TaskManager::updateTask(){
         std::getline(ss, status, '|');
         std::getline(ss, deadline);
         
-        std::cout << "id = [" << id << "]\n";
-        std::cout << "priority = [" << priority << "]\n";
+        
         int taskId= stoi(id);
         int taskpriority=stoi(priority);
 
@@ -460,7 +459,18 @@ void TaskManager::updateTask(){
                 std::cout<<"invalid choice\n";
         }
     }
-        
-    
+       
+    void TaskManager::displayStatistics(){
 
- 
+       int completedTasks = std::count_if(tasks.begin(), tasks.end(), [](const Task& task){
+         
+            return task.getStatus() =="Completed";
+       });
+       int totalTasks = tasks.size();
+       int pendingTasks =totalTasks - completedTasks;
+       std::cout<<"=*=*=*=*= Task Statistics =*=*=*=*=\n";
+       std::cout<<"Total Tasks: "<<totalTasks<<std::endl;   
+       std::cout<<"Completed Tasks: "<<completedTasks<<std::endl;
+       std::cout<<"Pending Tasks: "<<pendingTasks<<std::endl;
+
+    }
