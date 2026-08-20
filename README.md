@@ -49,6 +49,13 @@ The project is being developed incrementally to practice real-world C++ software
 - ✅ Leap-Year Validation
 
 ---
+### Statistics
+
+- ✅ Display Total Tasks
+- ✅ Display Completed Tasks
+- ✅ Display Pending Tasks
+- ✅ Display High-Priority Tasks
+- ✅ Display Low-Priority Tasks 
 
 ## 🔃 Sorting Options
 
@@ -92,7 +99,7 @@ YYYY-MM-DD
 
 ## 📂 Project Structure
 
-```text
+```text```
 Smart-Task-Manager/
 │
 ├── main.cpp
@@ -131,6 +138,7 @@ g++ *.cpp -o taskmanager
 - std::for_each()
 - std::transform()
 - std::sort()
+- std::count_if()
 - Lambda Expressions
 - Custom Comparators
 - Iterators
@@ -143,7 +151,6 @@ g++ *.cpp -o taskmanager
 ## 🔮 Future Improvements
 
 - Filter Tasks
-- Statistics Dashboard
 - Advanced Task Search
 - Task Categories or Tags
 - Improved Date Handling
