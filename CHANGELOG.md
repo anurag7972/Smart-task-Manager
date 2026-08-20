@@ -13,6 +13,7 @@ All notable changes to the Smart Task Manager are documented here.
 - Added completed task count using `std::count_if()`.
 - Added pending task count.
 - Added lambda expression for status-based task counting.
+- Added high-priority and low-priority task counts.
 
 ### Technical
 
