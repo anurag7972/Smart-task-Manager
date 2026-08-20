@@ -466,6 +466,7 @@ void TaskManager::updateTask(){
          
             return task.getStatus() =="Completed";
        });
+
        int totalTasks = tasks.size();
        int pendingTasks =totalTasks - completedTasks;
        std::cout<<"=*=*=*=*= Task Statistics =*=*=*=*=\n";
@@ -473,4 +474,13 @@ void TaskManager::updateTask(){
        std::cout<<"Completed Tasks: "<<completedTasks<<std::endl;
        std::cout<<"Pending Tasks: "<<pendingTasks<<std::endl;
 
+       int highPriorityTasks = std::count_if(tasks.begin(), tasks.end(), [](const Task& task){
+              if(task.getPriority() >=4){
+                return true; 
+              }
+                return false;
+            });
+       int lowpriorityTasks = totalTasks -highPriorityTasks;
+       std::cout<<"High Priority Tasks: "<<highPriorityTasks<<std::endl;
+       std::cout<<"Low Priority Tasks: "<<lowpriorityTasks<<std::endl;
     }
