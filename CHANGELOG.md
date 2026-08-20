@@ -4,6 +4,22 @@ All notable changes to the Smart Task Manager are documented here.
 
 ---
 
+## [1.4.0] - 2026-08-20
+
+### Added
+
+- Added Task Statistics menu option.
+- Added total task count.
+- Added completed task count using `std::count_if()`.
+- Added pending task count.
+- Added lambda expression for status-based task counting.
+
+### Technical
+
+- Used `std::count_if()` with a lambda expression to count completed tasks.
+- Used `tasks.size()` to calculate the total number of tasks.
+- Calculated pending tasks using total tasks minus completed tasks.
+
 ## [1.3.0] - 2026-08-11
 
 ### Added
