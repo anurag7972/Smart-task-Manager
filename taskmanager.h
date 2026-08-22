@@ -27,6 +27,7 @@ public:
     void loadFromFile();
     void sortTask();
     void displayStatistics();
+    void filterTasks();
 };
 
 #endif

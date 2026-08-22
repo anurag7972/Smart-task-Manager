@@ -484,3 +484,88 @@ void TaskManager::updateTask(){
        std::cout<<"High Priority Tasks: "<<highPriorityTasks<<std::endl;
        std::cout<<"Low Priority Tasks: "<<lowpriorityTasks<<std::endl;
     }
+
+    void TaskManager::filterTasks(){
+
+        int choice;
+        std::cout<<"=*=*=*=*= Filter Tasks =*=*=*=*=\n";
+        std::cout<<"1. Filter by Status\n";
+        std::cout<<"2. Filter by Priority\n";
+        std::cout<<"3. Back to menu\n";
+        std::cout<<" Enter your choice: \n";
+        std::cin>>choice;
+
+        switch (choice)
+        {
+        case 1:
+            {
+               std::string status;
+               std::cout<<"Enter the status to filter (Pending/Completed): "; 
+               std::cin>>status;
+
+               std::vector<Task> filteredTasks;
+               
+               std::copy_if(tasks.begin(), tasks.end(), std::back_inserter(filteredTasks), [&]
+                  (const Task& t){
+                     return t.getStatus()== status;    
+             });
+               if(filteredTasks.empty()){
+                 std::cout<<"NO task found:\n";
+               }else{
+                for (const auto &task : filteredTasks)
+                {
+                    task.displayTask();
+                }
+            }
+                
+
+            }
+            break;
+        case 2 :
+        {
+           int priorityChoice;
+
+            std::cout << "1. High Priority (4-5)\n";
+            std::cout << "2. Low Priority (1-3)\n";
+            std::cout << "Enter your choice: ";
+            std::cin >> priorityChoice;
+            
+             std::vector<Task> filteredTasks;
+
+
+            if(priorityChoice==1){
+                std::copy_if(tasks.begin(), tasks.end(), std::back_inserter(filteredTasks), [&]
+                  (const Task& t){
+                     return t.getPriority()>=4;
+            });
+        }else if (priorityChoice==2)
+        {
+           std::copy_if(tasks.begin(), tasks.end(), std::back_inserter(filteredTasks), []
+                  (const Task& t){
+                     return t.getPriority()<4;
+            });
+        }else{
+             std::cout<<"invlid choice: please enter 1 and 2:\n";
+              break;
+        }
+        if(filteredTasks.empty()){
+            std::cout<<"Task not  found:\n";
+        }
+          for (const auto &task : filteredTasks)
+          {
+            task.displayTask();
+          }
+        
+         
+        
+         break;
+        }
+        case 3:
+              
+        return;
+        default:
+         std::cout<<"Invalid choice: please Enter the Valid choice\n";
+            break;
+        }
+      
+    }

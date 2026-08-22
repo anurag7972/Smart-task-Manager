@@ -16,7 +16,8 @@ int main(){
         std::cout<<"6. Delete Task"<<std::endl;
         std::cout<<"7. Sort Task"<<std::endl;
         std::cout<<"8. Display Statistics"<<std::endl;
-        std::cout<<"9. Exit"<<std::endl;
+        std::cout<<"9. Filter Tasks"<<std::endl;
+        std::cout<<"10. Exit"<<std::endl;
         std::cout<<"Enter your choice: ";
         std::cin>>choice;
 
@@ -51,13 +52,16 @@ int main(){
                  tm.displayStatistics();
                 break;
             case 9:
+                tm.filterTasks();
+                break;
+            case 10:
                 std::cout<<"Exiting...";
                 break;
             default:
                 std::cout<<"invalid choice";
         }
     }
-    while (choice!=9);
+    while (choice!=10);
     
     return 0;
     
