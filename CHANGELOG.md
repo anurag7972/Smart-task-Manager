@@ -14,12 +14,20 @@ All notable changes to the Smart Task Manager are documented here.
 - Added pending task count.
 - Added lambda expression for status-based task counting.
 - Added high-priority and low-priority task counts.
+- Added Task Filtering menu option.
+- Added filtering by task status.
+- Added filtering by task priority.
+- Added filtering for Pending and Completed tasks.
+- Added filtering for High-Priority (4–5) and Low-Priority (1–3) tasks.
 
 ### Technical
 
 - Used `std::count_if()` with a lambda expression to count completed tasks.
 - Used `tasks.size()` to calculate the total number of tasks.
 - Calculated pending tasks using total tasks minus completed tasks.
+- Used `std::copy_if()` to create filtered task collections.
+- Used temporary vectors to store filtered tasks without modifying the original task list.
+- Used lambda expressions for status and priority filtering.
 
 ## [1.3.0] - 2026-08-11
 
