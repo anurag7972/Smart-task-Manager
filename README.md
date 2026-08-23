@@ -57,6 +57,13 @@ The project is being developed incrementally to practice real-world C++ software
 - ✅ Display High-Priority Tasks
 - ✅ Display Low-Priority Tasks 
 
+### Filtering
+
+- ✅ Filter Tasks by Status
+- ✅ Filter Tasks by Priority
+- ✅ Filter Pending and Completed Tasks
+- ✅ Filter High-Priority and Low-Priority Tasks
+
 ## 🔃 Sorting Options
 
 The Task Manager currently supports four sorting options:
@@ -139,6 +146,7 @@ g++ *.cpp -o taskmanager
 - std::transform()
 - std::sort()
 - std::count_if()
+- std::copy_if()
 - Lambda Expressions
 - Custom Comparators
 - Iterators
@@ -150,7 +158,6 @@ g++ *.cpp -o taskmanager
 
 ## 🔮 Future Improvements
 
-- Filter Tasks
 - Advanced Task Search
 - Task Categories or Tags
 - Improved Date Handling
