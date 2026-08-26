@@ -4,6 +4,15 @@ All notable changes to the Smart Task Manager are documented here.
 
 ---
 
+## [Unreleased]
+
+### Fixed
+
+- Added input validation for the main menu to prevent infinite loops when non-numeric input is entered.
+- Added exception handling while loading task data from file.
+- Handles invalid task IDs and priorities using `std::invalid_argument`.
+- Handles numeric values outside the valid range using `std::out_of_range`.
+
 ## [1.4.0] - 2026-08-20
 
 ### Added
