@@ -1,5 +1,6 @@
 #include "taskmanager.h"
 #include <iostream>
+#include <limits>
 int main(){
     TaskManager tm;
     tm.loadFromFile();
@@ -20,6 +21,12 @@ int main(){
         std::cout<<"10. Exit"<<std::endl;
         std::cout<<"Enter your choice: ";
         std::cin>>choice;
+        if(std::cin.fail()){
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+             std::cout<<"Invalid choice. Please enter a number.\n";
+             continue;
+        }
 
         switch(choice){
             case 1:
