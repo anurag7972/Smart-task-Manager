@@ -179,6 +179,10 @@ void TaskManager::updateTask(){
              std::cout<<" Enter the new task deadline: ";
              std::cin.ignore();
              std::getline(std::cin, deadline);
+             while(!isValidDeadline(deadline)){
+                std::cout<<"Invalid deadline: please enter valid deadline:(YYYY-MM-DD)\n";
+                std::getline(std::cin , deadline);
+             }
 
              task->setName(name);
              task->setDescription(description);
