@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cctype>
 #include <algorithm>
+#include <stdexcept>
 
 
 bool TaskManager::isTaskExists(int id){
@@ -357,6 +358,7 @@ void TaskManager::updateTask(){
    }
 
    void TaskManager::loadFromFile(){
+  
     std::ifstream  readFile("tasks.txt");
     if(!readFile){
 
@@ -365,6 +367,7 @@ void TaskManager::updateTask(){
     }
        std::string line;
       while(std::getline(readFile,line)){
+         std::cout << "Reading line: [" << line << "]\n";
         std::stringstream ss(line);
         std::string id;
         std::string name;
@@ -380,11 +383,14 @@ void TaskManager::updateTask(){
         std::getline(ss, status, '|');
         std::getline(ss, deadline);
         
-        
-        int taskId= stoi(id);
-        int taskpriority=stoi(priority);
+        try
+        {
+            
 
-        Task::Status taskStatus;
+            int taskId= stoi(id);
+            int taskpriority=stoi(priority);
+             
+             Task::Status taskStatus;
         if(status=="Pending"){
             taskStatus= Task::Status::Pending;           
         }else{
@@ -396,7 +402,21 @@ void TaskManager::updateTask(){
                 taskpriority,
                 taskStatus,
                 deadline);
-                tasks.push_back(newtask);      
+                tasks.push_back(newtask); 
+        }
+        catch(const std::invalid_argument& e)
+        {
+             
+            std::cerr<<"Invlaid data in file:"<< e.what() << '\n';
+        }
+        catch(const std::out_of_range& e){
+
+            std::cerr<< "Number is out of range: "<<e.what()<<std::endl;
+        }
+        
+       
+
+            
       }  
    
 }
