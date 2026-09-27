@@ -4,6 +4,11 @@
 #include <algorithm>
 #include <stdexcept>
 
+   TaskManager::TaskManager()
+   {
+    database.connect();
+   }
+
 
 bool TaskManager::isTaskExists(int id){
     for (const auto &t: tasks){
@@ -119,10 +124,19 @@ void TaskManager::addTask(){
         std::cout<<"Invalid deadline format. Please enter in YYYY-MM-DD format: ";
         std::getline(std::cin, deadline);
     }
-        Task newTask(task_id, name, description, priority, deadline);
-        tasks.push_back(newTask);
-        std::cout<<" Task added successfully! "<<std::endl;
-        std::cout<<" total tasks= "<<tasks.size()<<std::endl;
+       Task newTask(task_id, name, description, priority, deadline);
+
+if (database.insertTask(newTask))
+{
+    tasks.push_back(newTask);
+
+    std::cout << "Task added successfully!\n";
+    std::cout << "Total tasks = " << tasks.size() << std::endl;
+}
+else
+{
+    std::cout << "Task was not added because database insertion failed.\n";
+}
 }
 
 void TaskManager::displayTasks() const{
